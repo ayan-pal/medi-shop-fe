@@ -1,0 +1,25 @@
+.main-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 91.9vh;
+    background-color: white;
+    color: black;
+}
+
+.login-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.form-field{
+    width: 17rem;
+}
+
+.go-button{
+    background-color: rgb(21, 184, 21);
+    color: white;
+}
