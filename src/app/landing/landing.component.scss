@@ -1,0 +1,46 @@
+.main-div{
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+    height: 91.9vh;
+    background-color: white;
+    color: black;
+    flex-direction: row;
+}
+
+.cards{
+    display: flex;
+    min-width: 30%;
+    padding: 1rem;
+    flex-direction: column;
+    // border: 5px solid black;
+    // overflow-x: scroll;
+}
+
+.order-cart{
+    display: flex;
+    min-width: 50%;
+    padding: 1rem;
+    border: 5px;
+    // overflow-x: scroll;
+}
+
+.each-card{
+    display: flex;
+    padding: 2px;
+    flex-direction: row;
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+    max-height: 400px;
+    max-width: 400px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 20px;
+    background-color: slategray;
+    color: whitesmoke;
+    border-radius: 10px;
+}
+
+.each-card:hover {
+    cursor: pointer;
+}
