@@ -1,1 +1,33 @@
-<p>signup works!</p>
+<div class="main-div">
+    <div class="login-div" [formGroup]="signupForm">
+        <h2 style="color:whitesmoke">MediBuddy Sign Up!</h2>
+        
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Email</mat-label>
+            <input type='Email' matInput formControlName="email" placeholder="Email">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Password</mat-label>
+            <input type='password' matInput formControlName="password" placeholder="Password">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Confirm Password</mat-label>
+            <input type='password' matInput formControlName="confirmPassword" placeholder="Confirm Password">
+        </mat-form-field>
+        
+        <button mat-icon-button class="go-button">
+            <mat-icon>arrow_forward</mat-icon>
+        </button>
+
+        <h4 style="margin-top: 15px;">
+            Already a member? 
+            <span style="font-style: italic;">
+                <a routerLink="/login">
+                    Log in here!
+                </a>
+            </span>
+        </h4>
+    </div>
+</div>
