@@ -16,4 +16,8 @@ export class LandingComponent implements OnInit {
   goToConstruction(){
     this.router.navigate(['/construction']);
   }
+
+  goToOrders(){
+    this.router.navigate(['/orders']);
+  }
 }
