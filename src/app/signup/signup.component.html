@@ -17,8 +17,9 @@
             <input type='password' matInput formControlName="confirmPassword" placeholder="Confirm Password">
         </mat-form-field>
         
-        <button mat-icon-button class="go-button">
-            <mat-icon>arrow_forward</mat-icon>
+        <button mat-icon-button class="go-button" (click)="onSubmit()">
+            <mat-icon *ngIf="!workInProgress">arrow_forward</mat-icon>
+            <mat-spinner *ngIf="workInProgress" style='margin-left: 7px;' diameter="25"></mat-spinner>
         </button>
 
         <h4 style="margin-top: 15px;">

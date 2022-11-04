@@ -28,7 +28,46 @@
 .each-medicine-card{
     margin-bottom: 10px;
     max-width: 90%;
+    min-width: 90%;
 }
+
 .cart{
     display: flex;
+    max-width: 58%;
+    min-width: 58%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: 1rem;
+    max-height: 100%;
+    overflow-y: auto;
+    justify-content: start;
+    align-items: start;
+ }
+
+.cart-content{
+    display: flex;
+    max-width: 100%;
+    min-width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    justify-content: start;
+    align-items: start;
+}
+
+.each-medicine-card-cart{
+    margin-bottom: 10px;
+    max-width: 80%;
+    min-width: 80%;
+}
+
+.example-header-image {
+    background-image: url('../../assets/cart.png');
+    background-size: cover;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
 }

@@ -15,8 +15,11 @@ export class SignupComponent implements OnInit {
   });
 
   constructor(private fb: FormBuilder) { }
-
+  workInProgress = false;
   ngOnInit(): void {
   }
 
+  onSubmit(){
+    
+  }
 }

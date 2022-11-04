@@ -3,6 +3,8 @@ import { FormBuilder } from '@angular/forms';
 import { of } from 'rxjs';
 import { HttpUtilService } from '../services/http-util.service';
 import { UserService } from '../services/user.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-orders',
@@ -11,16 +13,14 @@ import { UserService } from '../services/user.service';
 })
 export class OrdersComponent implements OnInit {
 
-  searchForm = this.fb.group({
-    search: ['']
-  });
+  searchF: any;
   allProducts = {
     result: [
       {
         itemId: 1,
         itemName: 'Dolo 650mg',
-        storeQuantity: 10,
-        type: 'tablet',
+        storeQuantity: 0,
+        type: 'syrup',
         price: 150,
         details: {
           prescription: true,
@@ -121,8 +121,9 @@ export class OrdersComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     public user: UserService,
-    public http: HttpUtilService
-  ) { }
+    public http: HttpUtilService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     of(this.allProducts).subscribe(
@@ -130,6 +131,42 @@ export class OrdersComponent implements OnInit {
         this.allProductsList = data;
       }
     )
+  }
+
+  addToCart(eachMed: any){
+    eachMed['quantity'] = 1;
+    this.user.cart.details.push(eachMed);
+    this.user.cart.presence.push(eachMed.itemId);
+    console.log('Cart view', this.user.cart);
+  }
+
+  checkPresence(id: number){
+    return this.user.cart.presence.includes(id);
+  }
+
+  onAdd(i: number){
+    this.user.cart.details[i].quantity = this.user.cart.details[i].quantity + 1; 
+  }
+
+  onRemove(i: number){
+    this.user.cart.details[i].quantity = this.user.cart.details[i].quantity - 1; 
+  }
+
+  onDelete(i: number){
+    this.user.cart.details.splice(i, 1);
+  }
+
+  openDialog(): void {
+    // First we will have to call the place order api.
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.user.cart.details = [];
+      this.user.cart.presence = [];
+    });
   }
 
 }

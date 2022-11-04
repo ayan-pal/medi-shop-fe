@@ -1,33 +1,80 @@
 <div class='main-div'>
     <div class='cards'>
-        <div class="search" [formGroup]="searchForm">
+        <div class="search">
             <mat-form-field appearance="outline" class="form-field" style="width:100%">
                 <mat-label>Search</mat-label>
-                <input type='Email' matInput formControlName="search" placeholder="Search">
+                <input [(ngModel)]="searchF" matInput placeholder="Search">
             </mat-form-field>
         </div>
 
         <div class="items">
-            <mat-card class="each-medicine-card" *ngFor="let eachMed of allProductsList.result">
+            <mat-card class="each-medicine-card" *ngFor="let eachMed of allProductsList.result | filter:searchF">
                 <mat-card-title-group>
                     <mat-card-title>{{eachMed.itemName}}</mat-card-title>
                     <mat-card-subtitle *ngIf="eachMed.storeQuantity === 0" style="color:red; font-weight:bold">Out Of Stock</mat-card-subtitle>
                     <mat-card-subtitle *ngIf="eachMed.storeQuantity != 0" style="color:green; font-weight:bold">
                         In Stock
-                        <span style="margin-left:5px; color:black; font-weight: normal;">Store Quantity {{eachMed.storeQuantity}}</span>
+                        <span style="margin-left:5px; color:black; font-weight: normal;">Store Quantity: {{eachMed.storeQuantity}}</span>
                     </mat-card-subtitle>
-                    <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                    <mat-card-subtitle style="font-weight:bold">
+                        Price - Rs. {{eachMed.price}} 
+                        <span *ngIf="eachMed.details.prescription === true" style="margin-left:5px; color:black; font-size: small; font-weight: lighter;">(Prescription Required)</span>
+                    </mat-card-subtitle>
+                    <img mat-card-sm-image *ngIf="eachMed.type === 'tablet'" src="..\..\assets\tablet.jpg">
+                    <img mat-card-sm-image *ngIf="eachMed.type === 'syrup'" src="..\..\assets\syrup.jpg">
                     </mat-card-title-group>
                 <mat-card-content>
-                    asdasdasd asd asd asd asd asdas dasd asd asd asdasdasdas das das das das das dasd sa
+                    {{eachMed.details.description}}
                 </mat-card-content>
+                <mat-card-actions align="end">
+                    <button mat-raised-button style="background-color: green" *ngIf="eachMed.storeQuantity != 0 && !checkPresence(eachMed.itemId)" (click)="addToCart(eachMed)">Add to cart</button>
+                    <button mat-raised-button disabled="true" *ngIf="eachMed.storeQuantity != 0 && checkPresence(eachMed.itemId)">Added to cart</button>
+                    <button mat-raised-button *ngIf='eachMed.storeQuantity === 0' disabled="true">Out Of Stock</button>
+                </mat-card-actions>
             </mat-card>
         </div>
     
     </div>
 
-    <div class='cart'>
-        // Here we will have the cart.
-        <h1>Cart</h1>
-    </div>
+    <mat-card class="cart">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>
+                <p>My Cart</p>
+                <div style="margin-left: 450px">
+                    <button mat-raised-button>Upload</button>
+                    <button  mat-raised-button (click)="openDialog()">Order</button>
+                </div>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="cart-content">
+            <mat-card class="each-medicine-card-cart" *ngFor="let eachMed of  user.cart.details; let i=index;">
+                <mat-card-title-group>
+                    <mat-card-title>{{eachMed.itemName}}</mat-card-title>
+                    <mat-card-subtitle style="color:black; font-weight:bold">
+                        Quantity: {{eachMed.quantity}}
+                        <div class="button-div">
+                            <button mat-icon-button [disabled]="eachMed.quantity === 1" (click)="onRemove(i)"><mat-icon>remove</mat-icon></button>
+                            <button mat-icon-button [disabled]="eachMed.quantity === eachMed.storeQuantity" (click)="onAdd(i)"><mat-icon>add</mat-icon></button>
+                            <button mat-icon-button (click)="onDelete(i)"><mat-icon>delete</mat-icon></button>
+                        </div>
+                    </mat-card-subtitle>
+                    <mat-card-subtitle style="font-weight:bold">
+                        Price - Rs. {{eachMed.price}} 
+                        <span *ngIf="eachMed.details.prescription === true" style="margin-left:5px; color:black; font-size: small; font-weight: lighter;">(Prescription Required)</span>
+                    </mat-card-subtitle>
+                    <img mat-card-sm-image *ngIf="eachMed.type === 'tablet'" src="..\..\assets\tablet.jpg">
+                    <img mat-card-sm-image *ngIf="eachMed.type === 'syrup'" src="..\..\assets\syrup.jpg">
+                    </mat-card-title-group>
+                <mat-card-content>
+                    {{eachMed.details.description}}
+                </mat-card-content>
+                <!-- <mat-card-actions align="end">
+                    <button mat-raised-button style="background-color: green" *ngIf="eachMed.storeQuantity != 0 && !checkPresence(eachMed.itemId)" (click)="addToCart(eachMed)">Add to cart</button>
+                    <button mat-raised-button disabled="true" *ngIf="eachMed.storeQuantity != 0 && checkPresence(eachMed.itemId)">Added to cart</button>
+                    <button mat-raised-button *ngIf='eachMed.storeQuantity === 0' disabled="true">Out Of Stock</button>
+                </mat-card-actions> -->
+            </mat-card>
+        </mat-card-content>
+      </mat-card>
 </div>
