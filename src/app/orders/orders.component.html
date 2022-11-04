@@ -1,1 +1,33 @@
-<p>orders works!</p>
+<div class='main-div'>
+    <div class='cards'>
+        <div class="search" [formGroup]="searchForm">
+            <mat-form-field appearance="outline" class="form-field" style="width:100%">
+                <mat-label>Search</mat-label>
+                <input type='Email' matInput formControlName="search" placeholder="Search">
+            </mat-form-field>
+        </div>
+
+        <div class="items">
+            <mat-card class="each-medicine-card" *ngFor="let eachMed of allProductsList.result">
+                <mat-card-title-group>
+                    <mat-card-title>{{eachMed.itemName}}</mat-card-title>
+                    <mat-card-subtitle *ngIf="eachMed.storeQuantity === 0" style="color:red; font-weight:bold">Out Of Stock</mat-card-subtitle>
+                    <mat-card-subtitle *ngIf="eachMed.storeQuantity != 0" style="color:green; font-weight:bold">
+                        In Stock
+                        <span style="margin-left:5px; color:black; font-weight: normal;">Store Quantity {{eachMed.storeQuantity}}</span>
+                    </mat-card-subtitle>
+                    <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                    </mat-card-title-group>
+                <mat-card-content>
+                    asdasdasd asd asd asd asd asdas dasd asd asd asdasdasdas das das das das das dasd sa
+                </mat-card-content>
+            </mat-card>
+        </div>
+    
+    </div>
+
+    <div class='cart'>
+        // Here we will have the cart.
+        <h1>Cart</h1>
+    </div>
+</div>

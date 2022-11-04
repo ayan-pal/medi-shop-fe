@@ -18,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
 import { OrdersComponent } from './orders/orders.component';
-
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -46,6 +46,7 @@ import { OrdersComponent } from './orders/orders.component';
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

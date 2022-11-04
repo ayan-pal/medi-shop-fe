@@ -9,7 +9,7 @@ export class HttpUtilService {
 
   constructor(public http:HttpClient) { }
 
-  logIn() {
-    return this.http.get();
-  }
+  // logIn() {
+  //   return this.http.get();
+  // }
 }
