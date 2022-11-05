@@ -6,10 +6,15 @@ import { Injectable } from '@angular/core';
 export class UserService {
   loggedIn: boolean = false;
   email: string;
-  result: any;
+  orders: any;
+  cart: any;
 
   constructor() { 
     this.loggedIn = false;
     this.email = '';
+    this.cart = {
+      details: [],
+      presence: []
+    };
   }
 }

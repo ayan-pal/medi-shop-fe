@@ -1,6 +1,6 @@
 <div class="main-div">
     <div class="login-div" [formGroup]="loginForm">
-        <h2 style="color:black">MediBuddy Login!</h2>
+        <h2 style="color:black">MediBuddi Login!</h2>
         
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>Email</mat-label>
@@ -14,11 +14,11 @@
         
         <button mat-icon-button class="go-button" (click)="onSubmit()">
             <mat-icon *ngIf="!workInProgress">arrow_forward</mat-icon>
-            <mat-spinner *ngIf="workInProgress" diameter="25"></mat-spinner>
+            <mat-spinner *ngIf="workInProgress" style='margin-left: 7px;' diameter="25"></mat-spinner>
         </button>
 
         <h4 style="margin-top: 15px;">
-            New to MediBuddy?
+            New to MediBuddi?
             <span style="font-style: italic;">
                 <a routerLink="/signup">
                     Sign up here!

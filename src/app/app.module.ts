@@ -18,7 +18,14 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
 import { OrdersComponent } from './orders/orders.component';
-
+import {MatCardModule} from '@angular/material/card';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
+import {MatListModule} from '@angular/material/list';
+import { PastOrderDialogComponent } from './past-order-dialog/past-order-dialog.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +35,9 @@ import { OrdersComponent } from './orders/orders.component';
     LandingComponent,
     NavComponent,
     UnderConstructionComponent,
-    OrdersComponent
+    OrdersComponent,
+    DialogComponent,
+    PastOrderDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -40,12 +49,18 @@ import { OrdersComponent } from './orders/orders.component';
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
+    MatButtonModule,
     MatProgressSpinnerModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
+    MatCardModule,
+    Ng2SearchPipeModule,
+    FormsModule,
+    MatDialogModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

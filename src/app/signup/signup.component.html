@@ -1,6 +1,6 @@
 <div class="main-div">
     <div class="login-div" [formGroup]="signupForm">
-        <h2 style="color:black">MediBuddy Sign Up!</h2>
+        <h2 style="color:black">MediBuddi Sign Up!</h2>
         
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>Email</mat-label>
@@ -17,8 +17,9 @@
             <input type='password' matInput formControlName="confirmPassword" placeholder="Confirm Password">
         </mat-form-field>
         
-        <button mat-icon-button class="go-button">
-            <mat-icon>arrow_forward</mat-icon>
+        <button mat-icon-button class="go-button" (click)="onSubmit()">
+            <mat-icon *ngIf="!workInProgress">arrow_forward</mat-icon>
+            <mat-spinner *ngIf="workInProgress" style='margin-left: 7px;' diameter="25"></mat-spinner>
         </button>
 
         <h4 style="margin-top: 15px;">

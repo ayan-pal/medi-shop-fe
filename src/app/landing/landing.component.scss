@@ -44,3 +44,19 @@
 .each-card:hover {
     cursor: pointer;
 }
+
+.each-order{
+    margin-top: 5px;
+    margin-left: 200px;
+    border: 2px solid black;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: slategray;
+    color: whitesmoke;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.each-order:hover {
+    cursor: pointer;
+}
