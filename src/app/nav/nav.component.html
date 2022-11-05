@@ -1,5 +1,5 @@
 <div class="nav">
-      <span class="medibuddy">MediBuddy</span>
+      <span class="MediBuddi">MediBuddi</span>
       <span class="example-spacer"></span>
       
       <div *ngIf="user.loggedIn === true">
@@ -17,7 +17,7 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item>Logged in as: {{user.email}}</button>
           <button mat-menu-item (click)="goToOrders()">Orders</button>
-          <button mat-menu-item>Log Out</button>
+          <button mat-menu-item (click)="logOut()">Log Out</button>
         </mat-menu>
       </div>
 

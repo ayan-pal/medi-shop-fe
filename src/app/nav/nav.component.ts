@@ -19,4 +19,15 @@ export class NavComponent implements OnInit {
   goToOrders(){
     this.router.navigate(['/orders']);
   }
+
+  logOut(){
+    this.user.loggedIn = false;
+    this.user.email = '';
+    this.user.cart = {
+      details: [],
+      presence: []
+    };
+    this.user.orders = [];
+    this.router.navigate(['/login']);
+  }
 }

@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Order Id: {{data.eachOrder.orderId}}</h1>
+<div mat-dialog-content>
+  <h3>Here's the bill:</h3>
+
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let eachItem of data.eachOrder.items">{{eachItem.itemName}} X  {{eachItem.quantity}} = {{eachItem.quantity * eachItem.price}}</mat-list-item>
+  </mat-list>
+  
+  
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Ok</button>
+</div>

@@ -25,6 +25,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import {MatListModule} from '@angular/material/list';
+import { PastOrderDialogComponent } from './past-order-dialog/past-order-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MatListModule} from '@angular/material/list';
     NavComponent,
     UnderConstructionComponent,
     OrdersComponent,
-    DialogComponent
+    DialogComponent,
+    PastOrderDialogComponent
   ],
   imports: [
     BrowserModule,

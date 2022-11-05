@@ -11,6 +11,13 @@
         </div>
     </div>
     <div class="orders-cart">
-        <h1>Something</h1>
+        <div *ngIf="noOrders === 0" class='each-order'>
+            <h1>No Previous Orders!</h1>
+        </div>
+        <div class='each-order' *ngFor="let eachOrder of orderList" (click)="onDialog(eachOrder)">
+            <h1>Order Id: {{eachOrder.orderId}}</h1>
+            <h3>Order Status: {{eachOrder.orderStatus}}</h3>
+            <h3>Order Placed on: {{eachOrder.orderedOn * 1000| date:'dd/MM/yyyy'}}</h3>
+        </div>
     </div>
 </div>

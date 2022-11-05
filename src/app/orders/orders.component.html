@@ -24,7 +24,7 @@
                     <img mat-card-sm-image *ngIf="eachMed.type === 'syrup'" src="..\..\assets\syrup.jpg">
                     </mat-card-title-group>
                 <mat-card-content>
-                    {{eachMed.details.description}}
+                    {{eachMed.details.about}}
                 </mat-card-content>
                 <mat-card-actions align="end">
                     <button mat-raised-button style="background-color: green" *ngIf="eachMed.storeQuantity != 0 && !checkPresence(eachMed.itemId)" (click)="addToCart(eachMed)">Add to cart</button>
@@ -67,7 +67,7 @@
                     <img mat-card-sm-image *ngIf="eachMed.type === 'syrup'" src="..\..\assets\syrup.jpg">
                     </mat-card-title-group>
                 <mat-card-content>
-                    {{eachMed.details.description}}
+                    {{eachMed.details.about}}
                 </mat-card-content>
                 <!-- <mat-card-actions align="end">
                     <button mat-raised-button style="background-color: green" *ngIf="eachMed.storeQuantity != 0 && !checkPresence(eachMed.itemId)" (click)="addToCart(eachMed)">Add to cart</button>

@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs';
+import { HttpUtilService } from '../services/http-util.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -17,26 +18,6 @@ export class LoginComponent implements OnInit {
     password: [''],
   });
 
-  loginResult = {
-    message: 'logged_in',
-    loggedIn: true,
-    email: 'imaginefocused@gmail.com',
-    cart: [
-      {
-        itemId: 1,
-        quantity: 3,
-        itemName: 'Calpol 500mg',
-        price: 50,
-      },
-      {
-        itemId: 4,
-        itemName: 'Dolo 650mg',
-        quantity: 6,
-        price: 169,
-      },
-    ],
-    pastOrders: [] // Need to discuss
-  };
   workInProgress = false;
 
   constructor(
@@ -44,7 +25,8 @@ export class LoginComponent implements OnInit {
     public user: UserService,
     private route: ActivatedRoute,
     private router: Router,
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    public http: HttpUtilService
   ) { }
 
   ngOnInit(): void {
@@ -56,14 +38,16 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password
     };
     console.log('Button Clicked', param);
-    of(this.loginResult).subscribe(
-      (data) => {
+    this.http.logIn(param).subscribe(
+      (data: any) => {
         if (data.loggedIn){
           // Successfully logged in.
+          console.log('Data on successful login', data);
           this.toastr.success('Successful', data.message);
-          this.user.loggedIn = true;
+          this.user.loggedIn = data.loggedIn;
           this.user.email = data.email;
-          this.user.result = data;
+          this.user.orders = data.pastOrders;
+          console.log(data.pastOrders)
           this.router.navigate(['/landing']);
         }
         else {
